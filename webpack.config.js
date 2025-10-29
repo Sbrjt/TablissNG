@@ -35,7 +35,7 @@ const config = {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [isProduction ? MiniCssExtractPlugin.loader : "style-loader", "css-loader"],
       },
       {
         test: /\.(gif|jpe?g|png)$/,
