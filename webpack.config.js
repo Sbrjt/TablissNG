@@ -7,6 +7,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const workbox = require("workbox-webpack-plugin");
 const webpack = require("webpack");
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ReactRefreshTypeScript = require('react-refresh-typescript');
 
 const buildTarget = process.env.BUILD_TARGET || "web";
 const isProduction = process.env.NODE_ENV === "production";
@@ -28,6 +30,10 @@ const config = {
     filename: isWeb ? "[name].[contenthash:12].js" : "[name].js",
   },
   mode: isProduction ? "production" : "development",
+  devServer: {
+    hot: true,
+    static: false, // Explicitly disable static folder serving
+  },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
@@ -47,7 +53,7 @@ const config = {
       },
       {
         test: /\.sass$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [isProduction ? MiniCssExtractPlugin.loader : "style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.svg$/,
@@ -61,7 +67,10 @@ const config = {
             loader: "ts-loader",
             options: {
               transpileOnly: true,
-              experimentalWatchApi: true
+              // experimentalWatchApi: true,
+              getCustomTransformers: () => ({
+                before: [!isProduction && ReactRefreshTypeScript()].filter(Boolean),
+              }),
             }
           }
         ]
@@ -70,7 +79,7 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({
+    isProduction && new CopyWebpackPlugin({
       patterns: [
         { from: "target/shared" },
         {
@@ -82,7 +91,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: `./target/${buildTarget}/index.html`,
     }),
-    new MiniCssExtractPlugin({
+    isProduction && new MiniCssExtractPlugin({
       filename: isWeb ? "[name].[contenthash:12].css" : "[name].css",
     }),
     new webpack.DefinePlugin({
@@ -93,7 +102,8 @@ const config = {
       UNSPLASH_API_KEY: JSON.stringify(process.env.UNSPLASH_API_KEY),
       NASA_API_KEY: JSON.stringify(process.env.NASA_API_KEY),
     }),
-  ],
+    !isProduction && new ReactRefreshWebpackPlugin(),
+  ].filter(Boolean),
   devtool: isWeb || !isProduction ? "source-map" : false,
   stats: {
     warnings: true,
