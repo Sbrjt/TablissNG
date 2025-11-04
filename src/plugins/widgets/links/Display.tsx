@@ -135,7 +135,7 @@ const Display: FC<Props> = ({
         </i>
       ) : icon === "_favicon_google" && domain || icon === "_favicon" && domain ? (
         <i>
-          <img alt={domain} src={`https://www.google.com/s2/favicons?domain=${domain}&sz=${iconSize ?? 256}`} />
+          <img alt={domain} src={`https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://${domain}&size=${iconSize ?? 256}`} />
         </i>
       ) : icon === "_favicon_favicone" && domain ? (
         <i>
