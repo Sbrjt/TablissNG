@@ -139,13 +139,22 @@ if (!isWeb) {
   );
 }
 
-if (isWeb && isProduction) {
-  config.plugins.push(
-    new workbox.GenerateSW({
-      cacheId: "tabliss-cache",
-      dontCacheBustURLsMatching: /\.\w{12}\./,
-    }),
-  );
-}
+config.plugins.push(
+  new workbox.GenerateSW({
+    exclude: [/.*/], // Disable precaching
+    runtimeCaching: [
+      {
+        urlPattern: ({ request }) => request.destination === "image",
+        handler: "StaleWhileRevalidate",
+        options: {
+          cacheName: "tabliss-cache",
+          expiration: {
+            maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+          },
+        },
+      },
+    ],
+  }),
+);
 
 module.exports = config;
