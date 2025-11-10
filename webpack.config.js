@@ -141,7 +141,8 @@ if (!isWeb) {
 
 config.plugins.push(
   new workbox.GenerateSW({
-    exclude: [/.*/], // Disable precaching
+    exclude: [/.*/],        // Disable precaching
+    disableDevLogs: true,   // Enable logging if required
     runtimeCaching: [
       {
         urlPattern: ({ request }) => request.destination === "image",
@@ -149,6 +150,7 @@ config.plugins.push(
         options: {
           cacheName: "tabliss-cache",
           expiration: {
+            maxEntries: 50, 
             maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
           },
         },
