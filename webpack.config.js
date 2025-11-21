@@ -147,16 +147,29 @@ if (isProduction) {
       disableDevLogs: true,   // Enable logging if required
       runtimeCaching: [
 
-        // Favicons, GitHub API, Jokes API in SWR
+        // Cache for APIs (short term)
         {
-          urlPattern: ({ request, url }) =>
-            url.href.startsWith("https://icons.duckduckgo.com/ip3") ||
-            url.href.startsWith("https://www.google.com/s2/favicons") ||
-            url.origin === "https://favicone.com" ||
-            url.origin === "https://v2.jokeapi.dev" ||
-            url.origin === "https://github-contributions-api.jogruber.de" ||
-            url.origin === "https://api.github.com",
+          urlPattern: ({ url }) =>
+            url.hostname === "github-contributions-api.jogruber.de" ||
+            url.hostname === "api.github.com" ||
+            url.href.startsWith("https://api.unsplash.com/topics"),
 
+          handler: "CacheFirst",
+          options: {
+            cacheName: "tabliss-cache-apis",
+            expiration: {
+              maxAgeSeconds: 24 * 60 * 60, // 1 day
+            },
+          },
+        },
+
+        // Cache favicons (long term)
+        {
+          urlPattern: ({ url }) =>
+            url.href.startsWith("https://www.google.com/s2/favicons") ||
+            url.hostname === "icons.duckduckgo.com" ||
+            url.hostname === "favicone.com",
+            
           handler: "StaleWhileRevalidate",
           options: {
             cacheName: "tabliss-cache-swr",
@@ -167,14 +180,14 @@ if (isProduction) {
           },
         },
 
-        // Images (Cache First)
+        // Cache images (long term)
         {
           urlPattern: ({ request }) =>
             request.destination === "image",
 
           handler: "CacheFirst",
           options: {
-            cacheName: "tabliss-cache-cache-first",
+            cacheName: "tabliss-cache-images",
             expiration: {
               maxEntries: 10,
               maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
