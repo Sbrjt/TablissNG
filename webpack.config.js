@@ -139,48 +139,51 @@ if (!isWeb) {
   );
 }
 
-config.plugins.push(
-  new workbox.GenerateSW({
-    exclude: [/.*/],        // Disable precaching
-    disableDevLogs: true,   // Enable logging if required
-    runtimeCaching: [
 
-      // Favicons, GitHub API, Jokes API in SWR
-      {
-        urlPattern: ({ request, url }) =>
-          url.href.startsWith("https://icons.duckduckgo.com/ip3") ||
-          url.href.startsWith("https://www.google.com/s2/favicons") ||
-          url.origin === "https://favicone.com" ||
-          url.origin === "https://v2.jokeapi.dev" ||
-          url.origin === "https://github-contributions-api.jogruber.de" ||
-          url.origin === "https://api.github.com",
+if (isProduction) {
+  config.plugins.push(
+    new workbox.GenerateSW({
+      exclude: [/.*/],        // Disable precaching
+      disableDevLogs: true,   // Enable logging if required
+      runtimeCaching: [
 
-        handler: "StaleWhileRevalidate",
-        options: {
-          cacheName: "tabliss-cache-swr",
-          expiration: {
-            maxEntries: 50,
-            maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+        // Favicons, GitHub API, Jokes API in SWR
+        {
+          urlPattern: ({ request, url }) =>
+            url.href.startsWith("https://icons.duckduckgo.com/ip3") ||
+            url.href.startsWith("https://www.google.com/s2/favicons") ||
+            url.origin === "https://favicone.com" ||
+            url.origin === "https://v2.jokeapi.dev" ||
+            url.origin === "https://github-contributions-api.jogruber.de" ||
+            url.origin === "https://api.github.com",
+
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "tabliss-cache-swr",
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+            },
           },
         },
-      },
 
-      // Images (Cache First)
-      {
-        urlPattern: ({ request }) =>
-          request.destination === "image",
+        // Images (Cache First)
+        {
+          urlPattern: ({ request }) =>
+            request.destination === "image",
 
-        handler: "CacheFirst",
-        options: {
-          cacheName: "tabliss-cache-cache-first",
-          expiration: {
-            maxEntries: 10,
-            maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+          handler: "CacheFirst",
+          options: {
+            cacheName: "tabliss-cache-cache-first",
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 365 * 24 * 60 * 60, // 1 year
+            },
           },
         },
-      },
-    ],
-  }),
-);
+      ],
+    }),
+  );
+}
 
 module.exports = config;
