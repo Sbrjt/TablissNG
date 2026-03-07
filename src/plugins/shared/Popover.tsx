@@ -38,10 +38,7 @@ const Popover = ({ children }: PropsWithChildren) => {
 
   return (
     <PopoverContext.Provider value={{ open, toggle: () => setOpen((p) => !p) }}>
-      <div
-        ref={popoverRef}
-        style={{ position: "relative", display: "inline-block" }}
-      >
+      <div ref={popoverRef} style={{ position: "relative" }}>
         {children}
       </div>
     </PopoverContext.Provider>
@@ -50,7 +47,17 @@ const Popover = ({ children }: PropsWithChildren) => {
 
 const PopoverTrigger = ({ children }: PropsWithChildren) => {
   const { toggle } = usePopover();
-  return <div onClick={toggle}>{children}</div>;
+  return (
+    <button
+      style={{
+        all: "unset",
+        display: "flex",
+      }}
+      onClick={toggle}
+    >
+      {children}
+    </button>
+  );
 };
 
 const PopoverContent = ({ children }: PropsWithChildren) => {

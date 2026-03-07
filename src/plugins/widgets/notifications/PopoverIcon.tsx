@@ -4,6 +4,7 @@ import { formattedTime } from "../../../utils";
 import { Popover, PopoverContent, PopoverTrigger } from "../../shared";
 import { useInbox } from "./hooks";
 import { IconBadgeProps, PopoverIconProps } from "./types";
+import { convert } from "html-to-text";
 
 const PopoverIcon = ({
   icon,
@@ -51,7 +52,7 @@ const PopoverIcon = ({
                 target="_blank"
                 rel="noreferrer"
               >
-                {msg}
+                {convert(msg)}
               </a>
               <div className="notification-time">{formattedTime(time)}</div>
             </div>

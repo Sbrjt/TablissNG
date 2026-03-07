@@ -22,7 +22,7 @@ export const defaultData: Data = {
 };
 
 export type InboxItem = {
-  link: string;
+  link?: string;
   msg: string;
   time: number;
 };
@@ -54,10 +54,15 @@ export type WikiApiResponse = {
   query: {
     notifications: {
       list: Array<{
-        revid?: number;
-        title: { full: string };
-        type: string;
         timestamp: { utcunix: number };
+        "*": {
+          compactHeader: string;
+          links: {
+            primary: {
+              url?: string;
+            };
+          };
+        };
       }>;
     };
   };
