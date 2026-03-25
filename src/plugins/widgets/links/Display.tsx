@@ -1,17 +1,9 @@
-import React, { FC, useMemo } from "react";
+import { FC, useMemo } from "react";
+import * as React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { Icon } from "@iconify/react";
 import { Link, Cache } from "./types";
 import { isSpecialUrl, normalizeUrl } from "../../../utils";
-
-const displayUrl = (url: string): string => {
-  try {
-    const parsed = new URL(url);
-    return parsed.hostname + (parsed.pathname !== "/" ? parsed.pathname : "");
-  } catch (e) {
-    return url;
-  }
-};
 
 const getDomain = (url: string): string | null => {
   try {

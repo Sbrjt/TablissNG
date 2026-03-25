@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useToggle } from "../../hooks";
 import { useIntl } from "react-intl";
 import { sectionMessages } from "../../locales/messages";

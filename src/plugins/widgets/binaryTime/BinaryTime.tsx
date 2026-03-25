@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useTime } from "../../../hooks";
 import { Props, defaultData } from "./types";
 import "./BinaryTime.sass";

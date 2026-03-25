@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useObjectUrl, useBackgroundRotation } from "../../../hooks";
 import { db } from "../../../db/state";
 import { useValue } from "../../../lib/db/react";
@@ -48,7 +48,7 @@ const Media: React.FC<Props> = ({
   const isVideo = file.type.match(/^video\/(mp4|webm|ogg)$/);
 
   // Only show controls if there's more than one item to navigate through
-  const showControls = normalizedCache.items?.length > 1;
+  const hasControls = normalizedCache.items?.length > 1;
 
   return (
     <BaseBackground
@@ -58,7 +58,8 @@ const Media: React.FC<Props> = ({
       onPause={handlePause}
       onPrev={go(-1)}
       onNext={go(1)}
-      showControls={showControls}
+      showControls={hasControls}
+      controlsOnHover={hasControls && !data.showControls}
     >
       {isVideo && (
         <video

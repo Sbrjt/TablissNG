@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { db } from "../../../db/state";
 import { useCachedEffect } from "../../../hooks";
 import { useValue } from "../../../lib/db/react";

@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import { FC, useRef } from "react";
 import { FormattedDate } from "react-intl";
 import { useTime } from "../../../hooks";
 import Analogue from "./Analogue";

@@ -1,7 +1,24 @@
-import React from "react";
+import * as React from "react";
+import { format } from "date-fns";
 import { defaultData, Props } from "./types";
 import { getPicture } from "./api";
 import BaseBackground from "../base/BaseBackground";
+import { db } from "../../../db/state";
+import { useValue } from "../../../lib/db/react";
+
+const isDirectVideo = (url: string) => /\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
+
+const isCacheFresh = (
+  cache: { date?: Date | string } | undefined,
+  data: { date: string; customDate?: string },
+): boolean => {
+  if (!cache?.date) return false;
+  const cachedDate = String(cache.date);
+  if (data.date === "custom") {
+    return cachedDate === data.customDate;
+  }
+  return cachedDate === format(new Date(), "yyyy-MM-dd");
+};
 
 const Apod: React.FC<Props> = ({
   cache,
@@ -11,8 +28,11 @@ const Apod: React.FC<Props> = ({
 }) => {
   const [picture, setPicture] = React.useState(cache);
   const mounted = React.useRef(false);
+  const background = useValue(db, "background");
+  const { scale = true, position } = background.display;
 
   React.useEffect(() => {
+    if (isCacheFresh(cache, data)) return;
     const isUpdate = mounted.current;
     getPicture(data, loader).then((result) => {
       setCache(result);
@@ -28,15 +48,21 @@ const Apod: React.FC<Props> = ({
     return match ? match[1] : null;
   }, []);
 
+  const videoUrl = picture?.url;
+  const showVideo =
+    picture?.media_type === "video" && videoUrl && isDirectVideo(videoUrl);
+
   const imageUrl =
     picture?.media_type === "image"
       ? picture?.hdurl || picture?.url
-      : (() => {
-          const videoId = extractYouTubeId(picture?.url ?? "");
-          return videoId
-            ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-            : picture?.thumbnail_url || "";
-        })();
+      : showVideo
+        ? ""
+        : (() => {
+            const videoId = extractYouTubeId(picture?.url ?? "");
+            return videoId
+              ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+              : picture?.thumbnail_url || "";
+          })();
   const leftInfo =
     picture && picture.title && picture.date
       ? [
@@ -63,7 +89,22 @@ const Apod: React.FC<Props> = ({
       showInfo={data.showTitle}
       leftInfo={leftInfo}
       rightInfo={rightInfo}
-    />
+    >
+      {showVideo && (
+        <video
+          autoPlay
+          muted
+          playsInline
+          loop
+          className="video fullscreen"
+          src={videoUrl}
+          style={{
+            objectFit: scale ? "cover" : "contain",
+            objectPosition: position,
+          }}
+        />
+      )}
+    </BaseBackground>
   );
 };
 

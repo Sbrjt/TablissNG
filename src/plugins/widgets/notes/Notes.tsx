@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { API } from "../../types";
 import { Data, defaultData } from "./data";
 import Input from "./Input";

@@ -1,5 +1,6 @@
 import icons from "feather-icons/dist/icons.json";
-import React, { FC, useState, useRef, useEffect } from "react";
+import { FC, useState, useRef, useEffect } from "react";
+import * as React from "react";
 import { FormattedMessage, defineMessages, useIntl } from "react-intl";
 
 import {
@@ -221,7 +222,6 @@ const Input: FC<Props> = (props) => {
           />
         )}
       </h5>
-
       <label>
         <FormattedMessage id="plugins.links.input.url" defaultMessage="URL" />
         <input
@@ -235,7 +235,6 @@ const Input: FC<Props> = (props) => {
           }}
         />
       </label>
-
       <label>
         <FormattedMessage id="plugins.links.input.name" defaultMessage="Name" />{" "}
         <span className="text--grey">
@@ -247,7 +246,6 @@ const Input: FC<Props> = (props) => {
           onChange={(event) => props.onChange({ name: event.target.value })}
         />
       </label>
-
       <label>
         <FormattedMessage id="plugins.links.input.icon" defaultMessage="Icon" />{" "}
         <span className="text--grey">
@@ -320,7 +318,6 @@ const Input: FC<Props> = (props) => {
           </optgroup>
         </select>
       </label>
-
       {isCustomIconify && (
         <label>
           <FormattedMessage
@@ -351,7 +348,6 @@ const Input: FC<Props> = (props) => {
           </p>
         </label>
       )}
-
       {isCustomSvg && (
         <label>
           <FormattedMessage
@@ -382,7 +378,6 @@ const Input: FC<Props> = (props) => {
           </p>
         </label>
       )}
-
       {isCustomICON && (
         <label>
           <FormattedMessage
@@ -404,7 +399,6 @@ const Input: FC<Props> = (props) => {
           </p>
         </label>
       )}
-
       {isCustomUpload && (
         <div>
           <label>
@@ -420,7 +414,6 @@ const Input: FC<Props> = (props) => {
           </label>
         </div>
       )}
-
       {isFeather && (
         <div className="icon-picker">
           <button onClick={handleOpenModal} className="custom-select">
@@ -452,7 +445,6 @@ const Input: FC<Props> = (props) => {
           )}
         </div>
       )}
-
       {(isCustomICON ||
         (isCustomUpload &&
           props.iconCacheKey &&
@@ -522,7 +514,6 @@ const Input: FC<Props> = (props) => {
           )}
         </>
       )}
-
       {(isCustomSvg ||
         (isCustomUpload &&
           props.iconCacheKey &&
@@ -553,7 +544,6 @@ const Input: FC<Props> = (props) => {
           </p>
         </div>
       )}
-
       {isGoogleOrFavicone && (
         <label>
           Icon Size
@@ -571,7 +561,6 @@ const Input: FC<Props> = (props) => {
           </select>
         </label>
       )}
-
       {isModalOpen && (
         <div className="Modal-container" onClick={handleCloseModal}>
           <div className="Modal" onClick={(event) => event.stopPropagation()}>
@@ -621,7 +610,6 @@ const Input: FC<Props> = (props) => {
           </div>
         </div>
       )}
-
       <label>
         <FormattedMessage
           id="plugins.links.input.keyboardShortcut"
@@ -638,7 +626,6 @@ const Input: FC<Props> = (props) => {
           maxLength={1}
         />
       </label>
-
       {BUILD_TARGET !== "web" && (
         <label title={intl.formatMessage(messages.useExtensionTabsHelp)}>
           <input
@@ -654,7 +641,6 @@ const Input: FC<Props> = (props) => {
           />
         </label>
       )}
-
       <hr />
     </div>
   );

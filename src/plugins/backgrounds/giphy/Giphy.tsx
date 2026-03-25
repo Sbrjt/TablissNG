@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useBackgroundRotation } from "../../../hooks";
 import BaseBackground from "../base/BaseBackground";
 import { getGifs } from "./api";
@@ -42,6 +42,8 @@ const Giphy: React.FC<Props> = ({
       onPause={handlePause}
       onPrev={go(-1)}
       onNext={go(1)}
+      showControls={true}
+      controlsOnHover={!data.showControls}
       showInfo={true}
       leftInfo={leftInfo}
     />

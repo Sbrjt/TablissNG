@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { FormattedRelativeTime } from "react-intl";
 import { useTime } from "../../../hooks";
 import { selectUnit } from "../../../utils";

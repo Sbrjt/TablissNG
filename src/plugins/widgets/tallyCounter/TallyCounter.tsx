@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Icon } from "@iconify/react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { API } from "../../types";

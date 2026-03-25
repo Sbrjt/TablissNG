@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import * as React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { API } from "../../types";
 import { Data, defaultData } from "./types";

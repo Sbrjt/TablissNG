@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useRef } from "react";
+import { ChangeEvent, FC, useRef } from "react";
 import {
   BoardPreference,
   createFetchJob,

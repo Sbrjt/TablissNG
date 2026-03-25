@@ -1,7 +1,8 @@
-import React, { FC } from "react";
+import * as React from "react";
 // import categories from "./categories";
 import { FormattedMessage } from "react-intl";
-import { pluginMessages } from "../../../locales/messages";
+import { pluginMessages, timingMessages } from "../../../locales/messages";
+import { MINUTES, HOURS } from "../../../utils";
 import { Props, defaultData } from "./types";
 
 const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
@@ -44,7 +45,7 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
       <input
         type="radio"
         checked={data.category === "dwyl"}
-        onChange={() => setData({ category: "dwyl" })}
+        onChange={() => setData({ ...data, category: "dwyl" })}
       />{" "}
       <FormattedMessage
         id="plugins.quotes.dwylQuotes"
@@ -66,7 +67,7 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
       <input
         type="radio"
         checked={data.category === "quotable"}
-        onChange={() => setData({ category: "quotable" })}
+        onChange={() => setData({ ...data, category: "quotable" })}
       />{" "}
       <FormattedMessage
         id="plugins.quotes.quotableQuote"
@@ -89,7 +90,7 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
       <input
         type="radio"
         checked={data.category === "randomBible"}
-        onChange={() => setData({ category: "randomBible" })}
+        onChange={() => setData({ ...data, category: "randomBible" })}
       />{" "}
       <FormattedMessage
         id="plugins.quotes.randomBibleVerse"
@@ -116,7 +117,7 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
       <input
         type="radio"
         checked={data.category === "developerexcuses"}
-        onChange={() => setData({ category: "developerexcuses" })}
+        onChange={() => setData({ ...data, category: "developerexcuses" })}
       />{" "}
       <FormattedMessage
         id="plugins.quotes.developerExcuses"
@@ -134,6 +135,36 @@ const QuoteSettings: React.FC<Props> = ({ data = defaultData, setData }) => (
         Developer Excuses
       </a>
     </p>
+
+    <label>
+      <FormattedMessage
+        id="plugins.quotes.showANewQuote"
+        defaultMessage="Show a new quote"
+        description="Show a new quote title"
+      />
+      <select
+        value={data.timeout}
+        onChange={(event) =>
+          setData({ ...data, timeout: Number(event.target.value) })
+        }
+      >
+        <option value={5 * MINUTES}>
+          <FormattedMessage {...timingMessages.every5min} />
+        </option>
+        <option value={15 * MINUTES}>
+          <FormattedMessage {...timingMessages.every15min} />
+        </option>
+        <option value={HOURS}>
+          <FormattedMessage {...timingMessages.everyHour} />
+        </option>
+        <option value={24 * HOURS}>
+          <FormattedMessage {...timingMessages.everyDay} />
+        </option>
+        <option value={7 * 24 * HOURS}>
+          <FormattedMessage {...timingMessages.everyWeek} />
+        </option>
+      </select>
+    </label>
   </div>
 );
 

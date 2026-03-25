@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import * as React from "react";
 import { defaultData, Props, Data } from "./types";
 import { BookmarkTreeNode } from "./types";
 
@@ -158,7 +159,7 @@ const BookmarksSettings: FC<Props> = ({ data = defaultData, setData }) => {
         <input
           type="checkbox"
           checked={data.wrap}
-          onChange={(event) => setData({ ...data, wrap: !data.wrap })}
+          onChange={(event) => setData({ ...data, wrap: event.target.checked })}
         />
         Wrap long titles
       </label>

@@ -1,4 +1,5 @@
-import React, { FC, useLayoutEffect, useRef, useState } from "react";
+import { FC, useLayoutEffect, useRef, useState } from "react";
+import * as React from "react";
 
 import { useKeyPress } from "../../../hooks";
 import { Icon, RemoveIcon } from "../../../views/shared";

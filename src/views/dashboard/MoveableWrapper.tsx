@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import Moveable from "react-moveable";
 
 interface MoveableWrapperProps {

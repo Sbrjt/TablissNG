@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { IntlProvider as ReactIntlProvider } from "react-intl";
 import { db } from "../db/state";
 import { useValue } from "../lib/db/react";

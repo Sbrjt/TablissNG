@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { WidgetPosition, WidgetState } from "../../db/state";
 import { getConfig } from "../../plugins";
 import Plugin from "../shared/Plugin";

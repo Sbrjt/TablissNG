@@ -1,4 +1,5 @@
-import React, { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
+import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { BookmarkTreeNode } from "../bookmarks/types";
 import { Link } from "./types";

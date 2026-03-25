@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Props, defaultCache, defaultData } from "./types";
 import Display from "../links/Display";
 import "./TopSites.sass";

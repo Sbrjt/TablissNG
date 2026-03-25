@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import * as React from "react";
 import { FormattedMessage, useIntl, defineMessages } from "react-intl";
 import { useObjectUrls } from "../../../hooks";
 import { IconButton, RemoveIcon } from "../../../views/shared";
+import { backgroundMessages } from "../../../locales/messages";
 import BaseSettings from "../base/BaseSettings";
 import "./MediaSettings.sass";
 import { defaultCache, defaultData, Props } from "./types";
@@ -63,7 +65,6 @@ const ImageSettings: React.FC<Props> = ({
           />
         }
       />
-
       <label>
         <input
           accept=".mp4, .webm, .ogg, image/*"
@@ -74,7 +75,6 @@ const ImageSettings: React.FC<Props> = ({
           type="file"
         />
       </label>
-
       <p className="info media-count">
         <FormattedMessage
           id="backgrounds.media.uploadCount"
@@ -85,7 +85,6 @@ const ImageSettings: React.FC<Props> = ({
           {isExpanded ? "Collapse" : "Expand"}
         </a>
       </p>
-
       <div className="grid">
         {isExpanded &&
           urls &&
@@ -111,7 +110,6 @@ const ImageSettings: React.FC<Props> = ({
             );
           })}
       </div>
-
       {largeMedia && (
         <p className="info" style={{ marginTop: "5px" }}>
           <FormattedMessage
@@ -120,13 +118,22 @@ const ImageSettings: React.FC<Props> = ({
           />
         </p>
       )}
-
       <p className="info">
         <FormattedMessage
           id="backgrounds.media.syncWarning"
           defaultMessage="Media does not sync between devices."
         />
       </p>
+      <label>
+        <input
+          type="checkbox"
+          checked={data.showControls}
+          onChange={(event) =>
+            setData({ ...data, showControls: event.target.checked })
+          }
+        />{" "}
+        <FormattedMessage {...backgroundMessages.showControls} />
+      </label>
     </div>
   );
 };

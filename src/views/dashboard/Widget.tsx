@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { WidgetDisplay, db } from "../../db/state";
 import { setWidgetDisplay } from "../../db/action";
 import { useKey } from "../../lib/db/react";

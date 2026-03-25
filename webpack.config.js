@@ -200,11 +200,11 @@ if (isProduction && buildTarget !== "firefox") {
           },
         },
 
-        // Cache images (long term)
+        // Cache images (use NetworkFirst to respect server cache-control headers)
         {
           urlPattern: ({ request }) => request.destination === "image",
 
-          handler: "CacheFirst",
+          handler: "NetworkFirst",
           options: {
             cacheName: "tabliss-cache-images",
             expiration: {

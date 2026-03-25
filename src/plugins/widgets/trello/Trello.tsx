@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import { FC, useEffect } from "react";
 import { Props, List, defaultCache, TrelloSession } from "./types";
 import "./Trello.sass";
 

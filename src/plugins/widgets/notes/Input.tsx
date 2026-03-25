@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useKeyPress } from "../../../hooks";
 
 interface Props extends Omit<

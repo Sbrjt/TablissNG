@@ -1,4 +1,3 @@
-import React from "react";
 import { createRoot } from "react-dom/client";
 import { capture } from "./errorHandler";
 import { register as registerServiceWorker } from "./serviceWorker";

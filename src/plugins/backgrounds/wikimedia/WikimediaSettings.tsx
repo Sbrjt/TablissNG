@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import "./WikimediaSettings.sass";
 import { DebounceInput } from "../../shared";
@@ -45,7 +45,9 @@ const WikimediaSettings: React.FC<Props> = ({
       <input
         type="checkbox"
         checked={data.showTitle}
-        onChange={(event) => setData({ ...data, showTitle: !data.showTitle })}
+        onChange={(event) =>
+          setData({ ...data, showTitle: event.target.checked })
+        }
       />{" "}
       <FormattedMessage {...backgroundMessages.showTitle} />
     </label>

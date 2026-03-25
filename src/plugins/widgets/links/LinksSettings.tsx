@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import { FC, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSavedReducer } from "../../../hooks";
 import Input from "./Input";
@@ -10,13 +10,12 @@ import {
   importLinks,
 } from "./actions";
 import { reducer } from "./reducer";
-import { Data, Link, Props, defaultCache, defaultData } from "./types";
+import { Data, Link, Props, defaultData } from "./types";
 import ImportBookmarks from "./ImportBookmarks";
 
 const LinksSettings: FC<Props> = ({
   data = defaultData,
   setData,
-  cache = defaultCache,
   setCache,
 }) => {
   const saveLinks = (links: Link[]) => setData({ ...data, links });

@@ -1,4 +1,4 @@
-import React, { FC, useState, useMemo } from "react";
+import { FC, useState, useMemo } from "react";
 import { useCachedEffect } from "../../../hooks";
 import { getRandomColorPalette } from "./api";
 import { Props, defaultData } from "./types";

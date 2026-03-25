@@ -1,4 +1,5 @@
-import React, { FC, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
+import * as React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { Icon } from "@iconify/react";
 import { useKeyPress } from "../../../hooks";

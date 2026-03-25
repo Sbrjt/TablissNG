@@ -1,4 +1,5 @@
-import React, { FC, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
+import * as React from "react";
 
 import { State } from "./reducer";
 import TodoItem from "./TodoItem";

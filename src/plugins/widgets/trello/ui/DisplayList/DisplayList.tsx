@@ -1,5 +1,5 @@
-import React from "react";
-import { DisplayList, Item, colourPalette } from "../../types";
+import type { DisplayList, Item } from "../../types";
+import { colourPalette } from "../../types";
 import { Spinner } from "../../../../shared";
 import "./DisplayList.sass";
 

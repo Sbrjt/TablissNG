@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { ErrorContext } from "../../contexts/error";
 import { UiContext } from "../../contexts/ui";
@@ -49,9 +49,8 @@ const Overlay: React.FC = () => {
   useKeyPress(toggleFocus, ["w"]);
   useKeyPress(toggleSettings, ["s"]);
 
-  // Hooks inside a condition? Works because the condition always resolves the same
   const [isFullscreen, handleToggleFullscreen] = useFullscreen();
-  if (handleToggleFullscreen) useKeyPress(handleToggleFullscreen, ["f"]);
+  useKeyPress(handleToggleFullscreen || null, ["f"]);
 
   return (
     <div className={`Overlay ${settingsIconPosition}`}>

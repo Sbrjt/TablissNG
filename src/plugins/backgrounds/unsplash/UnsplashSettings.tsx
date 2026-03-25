@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { FormattedMessage, defineMessages, useIntl } from "react-intl";
 import { DebounceInput } from "../../shared";
 import topics from "./topics.json";
@@ -170,7 +170,7 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
               type="checkbox"
               checked={data.featured}
               onChange={(event) =>
-                setData({ ...data, featured: !data.featured })
+                setData({ ...data, featured: event.target.checked })
               }
             />{" "}
             <FormattedMessage
@@ -247,9 +247,22 @@ const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
         <input
           type="checkbox"
           checked={data.showTitle}
-          onChange={() => setData({ ...data, showTitle: !data.showTitle })}
+          onChange={(event) =>
+            setData({ ...data, showTitle: event.target.checked })
+          }
         />{" "}
         <FormattedMessage {...backgroundMessages.showTitle} />
+      </label>
+
+      <label>
+        <input
+          type="checkbox"
+          checked={data.showControls}
+          onChange={(event) =>
+            setData({ ...data, showControls: event.target.checked })
+          }
+        />{" "}
+        <FormattedMessage {...backgroundMessages.showControls} />
       </label>
     </div>
   );

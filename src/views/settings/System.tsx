@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { FormattedMessage, defineMessages, useIntl } from "react-intl";
 import { db, FaviconMode } from "../../db/state";
 import { useKey } from "../../lib/db/react";

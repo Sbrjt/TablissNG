@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { FallbackProps } from "react-error-boundary";
 import { FormattedMessage } from "react-intl";
 

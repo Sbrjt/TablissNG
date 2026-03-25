@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { FormattedRelativeTime, FormattedMessage } from "react-intl";
 import { useTime } from "../../../hooks";
 import { selectUnit } from "../../../utils";

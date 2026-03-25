@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { FormattedMessage, defineMessages, useIntl } from "react-intl";
 import { setWidgetDisplay } from "../../db/action";
 import { WidgetState } from "../../db/state";
@@ -39,12 +39,6 @@ const messages = defineMessages({
     description: "Button title for moving widget up",
   },
 });
-
-interface Config {
-  name: { id: string; defaultMessage: string };
-  description: { id: string; defaultMessage: string };
-  settingsComponent?: React.ComponentType<any>;
-}
 
 interface Props {
   plugin: WidgetState;

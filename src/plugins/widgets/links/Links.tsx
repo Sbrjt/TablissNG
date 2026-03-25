@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from "react";
+import { FC, useEffect, useMemo } from "react";
 
 import { Icon } from "@iconify/react";
 import { defineMessages, useIntl } from "react-intl";

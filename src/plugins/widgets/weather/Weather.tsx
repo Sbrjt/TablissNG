@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import * as React from "react";
 import { defineMessages, useIntl } from "react-intl";
 import { useCachedEffect, useTime } from "../../../hooks";
 import { HOURS } from "../../../utils";

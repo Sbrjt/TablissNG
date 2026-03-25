@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { FormattedMessage } from "react-intl";
 import { API } from "../../types";
 import { Data, defaultData } from "./data";

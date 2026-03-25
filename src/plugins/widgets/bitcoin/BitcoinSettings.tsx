@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { FormattedMessage, defineMessages, useIntl } from "react-intl";
 import { capitalize } from "../../../utils";
 import { defaultData, Data, Props } from "./types";

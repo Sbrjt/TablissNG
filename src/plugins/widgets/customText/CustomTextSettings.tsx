@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import * as React from "react";
 import { Icon } from "@iconify/react";
 import { FormattedMessage } from "react-intl";
 import { Props, defaultData } from "./types";

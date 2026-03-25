@@ -112,6 +112,11 @@ export const backgroundMessages = defineMessages({
     defaultMessage: "Show title",
     description: "Toggle for showing/hiding image titles",
   },
+  showControls: {
+    id: "backgrounds.showControls",
+    defaultMessage: "Show controls",
+    description: "Toggle for always showing background controls",
+  },
   today: {
     id: "backgrounds.today",
     defaultMessage: "Today",
