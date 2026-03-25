@@ -1,7 +1,7 @@
 import { defineMessages } from "react-intl";
 import { Config } from "../../types";
 import LeetcodeCalendarWidget from "./Leetcode";
-import Settings from "./LeetcodeSettings";
+import LeetcodeSettings from "./LeetcodeSettings";
 
 const messages = defineMessages({
   name: {
@@ -21,7 +21,7 @@ const config: Config = {
   name: messages.name,
   description: messages.description,
   dashboardComponent: LeetcodeCalendarWidget,
-  settingsComponent: Settings,
+  settingsComponent: LeetcodeSettings,
 };
 
 export default config;

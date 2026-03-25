@@ -3,12 +3,11 @@ import { Activity } from "react-activity-calendar";
 import { useIntl } from "react-intl";
 import { useFormatMessages } from "../../../hooks";
 import {
-  calenderLegendMessages,
+  calendarLegendMessages,
   monthMessages,
   weekdayMessages,
 } from "../../../locales/messages";
 import { fetchCalendar } from "./api";
-import "./Leetcode";
 import { messages, tooltipMessages } from "./messages";
 
 export const useCalendar = (username: string | undefined) => {
@@ -34,7 +33,7 @@ export const useMessages = () => {
   const intl = useIntl();
   const months = useFormatMessages(monthMessages);
   const weekdays = useFormatMessages(weekdayMessages);
-  const legend = useFormatMessages(calenderLegendMessages);
+  const legend = useFormatMessages(calendarLegendMessages);
 
   // Localization for the calendar
   const labels = {

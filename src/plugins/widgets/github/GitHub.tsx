@@ -4,7 +4,7 @@ import { useIntl } from "react-intl";
 import { useFormatMessages } from "../../../hooks/useFormatMessages";
 import { useTheme } from "../../../hooks/useTheme";
 import {
-  calenderLegendMessages,
+  calendarLegendMessages,
   monthMessages,
   weekdayMessages,
 } from "../../../locales/messages";
@@ -16,7 +16,7 @@ const GitHubCalendarWidget: FC<Props> = ({ data = defaultData }) => {
   const intl = useIntl();
   const months = useFormatMessages(monthMessages);
   const weekdays = useFormatMessages(weekdayMessages);
-  const legend = useFormatMessages(calenderLegendMessages);
+  const legend = useFormatMessages(calendarLegendMessages);
   const { isDark } = useTheme();
 
   if (!data.username) return null;

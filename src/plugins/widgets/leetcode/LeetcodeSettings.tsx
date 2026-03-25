@@ -1,9 +1,8 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { DebounceInput } from "../../shared";
 import { defaultData, Props } from "./types";
 
-const Settings = ({ data = defaultData, setData }: Props) => {
+const LeetcodeSettings = ({ data = defaultData, setData }: Props) => {
   return (
     <div className="LeetcodeSettings">
       <label>
@@ -23,7 +22,7 @@ const Settings = ({ data = defaultData, setData }: Props) => {
         <input
           type="checkbox"
           checked={data.showColorLegend}
-          onChange={(event) =>
+          onChange={() =>
             setData({ ...data, showColorLegend: !data.showColorLegend })
           }
         />{" "}
@@ -38,7 +37,7 @@ const Settings = ({ data = defaultData, setData }: Props) => {
         <input
           type="checkbox"
           checked={data.showMonthLabels}
-          onChange={(event) =>
+          onChange={() =>
             setData({ ...data, showMonthLabels: !data.showMonthLabels })
           }
         />{" "}
@@ -53,7 +52,7 @@ const Settings = ({ data = defaultData, setData }: Props) => {
         <input
           type="checkbox"
           checked={data.showTotalCount}
-          onChange={(event) =>
+          onChange={() =>
             setData({ ...data, showTotalCount: !data.showTotalCount })
           }
         />{" "}
@@ -68,7 +67,7 @@ const Settings = ({ data = defaultData, setData }: Props) => {
         <input
           type="checkbox"
           checked={data.showTooltips}
-          onChange={(event) =>
+          onChange={() =>
             setData({ ...data, showTooltips: !data.showTooltips })
           }
         />{" "}
@@ -121,4 +120,4 @@ const Settings = ({ data = defaultData, setData }: Props) => {
   );
 };
 
-export default Settings;
+export default LeetcodeSettings;

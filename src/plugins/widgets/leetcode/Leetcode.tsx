@@ -1,4 +1,3 @@
-import React from "react";
 import { ActivityCalendar } from "react-activity-calendar";
 import { useTheme } from "../../../hooks";
 import "./Leetcode.sass";
