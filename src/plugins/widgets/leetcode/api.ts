@@ -1,6 +1,7 @@
 import { Activity } from "react-activity-calendar";
 
-const url = "https://alfa-leetcode-api.onrender.com";
+const url = "https://leetcode-api-pied.vercel.app/user";
+
 const MAX_LEVEL = 4;
 
 export const fetchCalendar = async (userId: string) => {
@@ -10,7 +11,7 @@ export const fetchCalendar = async (userId: string) => {
     if (!res.ok) return null;
 
     const json = await res.json();
-    const calendar = JSON.parse(json.submissionCalendar);
+    const calendar = json.submissionCalendar;
 
     if (Object.keys(calendar).length === 0) return null;
 
@@ -38,3 +39,5 @@ export const fetchCalendar = async (userId: string) => {
     return null;
   }
 };
+
+// Data sourced from: https://github.com/noworneverev/leetcode-api
