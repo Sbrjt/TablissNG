@@ -6,7 +6,7 @@ import { defaultData, Props } from "./types";
 const GitHubSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
   const intl = useIntl();
   return (
-    <div className="MessageSettings">
+    <div className="GithubSettings">
       <label>
         <FormattedMessage
           id="plugins.github.username"

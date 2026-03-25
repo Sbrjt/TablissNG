@@ -27,7 +27,7 @@ const LeetcodeCalendarWidget = ({ data = defaultData }: Props) => {
     <>
       {calendar && (
         <a
-          className="GitHub"
+          className="Leetcode"
           href={hrefMap[data.clickAction]}
           target="_blank"
           rel="noopener noreferrer"

@@ -1,23 +1,22 @@
 import React, { FC } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { useIntl } from "react-intl";
-import "./GitHub.sass";
 import { useFormatMessages } from "../../../hooks/useFormatMessages";
 import { useTheme } from "../../../hooks/useTheme";
 import {
+  calenderLegendMessages,
   monthMessages,
   weekdayMessages,
-  legendMessages,
-  messages,
-  tooltipMessages,
-} from "./messages";
+} from "../../../locales/messages";
+import "./GitHub.sass";
+import { messages, tooltipMessages } from "./messages";
 import { Props, defaultData } from "./types";
 
 const GitHubCalendarWidget: FC<Props> = ({ data = defaultData }) => {
   const intl = useIntl();
   const months = useFormatMessages(monthMessages);
   const weekdays = useFormatMessages(weekdayMessages);
-  const legend = useFormatMessages(legendMessages);
+  const legend = useFormatMessages(calenderLegendMessages);
   const { isDark } = useTheme();
 
   if (!data.username) return null;

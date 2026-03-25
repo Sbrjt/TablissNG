@@ -1,12 +1,11 @@
 import React from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { DebounceInput } from "../../shared";
 import { defaultData, Props } from "./types";
 
 const Settings = ({ data = defaultData, setData }: Props) => {
-  const intl = useIntl();
   return (
-    <div className="MessageSettings">
+    <div className="LeetcodeSettings">
       <label>
         <FormattedMessage
           id="plugins.leetcode.username"
