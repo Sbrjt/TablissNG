@@ -102,7 +102,7 @@ const LeetcodeSettings = ({ data = defaultData, setData }: Props) => {
           </option>
           <option value="potd">
             <FormattedMessage
-              id="plugins.leetcode.clickAction.leetcode"
+              id="plugins.leetcode.clickAction.potd"
               defaultMessage="Go to POTD"
               description="Option to go to POTD"
             />
