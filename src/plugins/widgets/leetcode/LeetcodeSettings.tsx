@@ -22,8 +22,8 @@ const LeetcodeSettings = ({ data = defaultData, setData }: Props) => {
         <input
           type="checkbox"
           checked={data.showColorLegend}
-          onChange={() =>
-            setData({ ...data, showColorLegend: !data.showColorLegend })
+          onChange={(event) =>
+            setData({ ...data, showColorLegend: event.target.checked })
           }
         />{" "}
         <FormattedMessage
@@ -37,8 +37,8 @@ const LeetcodeSettings = ({ data = defaultData, setData }: Props) => {
         <input
           type="checkbox"
           checked={data.showMonthLabels}
-          onChange={() =>
-            setData({ ...data, showMonthLabels: !data.showMonthLabels })
+          onChange={(event) =>
+            setData({ ...data, showMonthLabels: event.target.checked })
           }
         />{" "}
         <FormattedMessage
@@ -52,8 +52,8 @@ const LeetcodeSettings = ({ data = defaultData, setData }: Props) => {
         <input
           type="checkbox"
           checked={data.showTotalCount}
-          onChange={() =>
-            setData({ ...data, showTotalCount: !data.showTotalCount })
+          onChange={(event) =>
+            setData({ ...data, showTotalCount: event.target.checked })
           }
         />{" "}
         <FormattedMessage
@@ -67,8 +67,8 @@ const LeetcodeSettings = ({ data = defaultData, setData }: Props) => {
         <input
           type="checkbox"
           checked={data.showTooltips}
-          onChange={() =>
-            setData({ ...data, showTooltips: !data.showTooltips })
+          onChange={(event) =>
+            setData({ ...data, showTooltips: event.target.checked })
           }
         />{" "}
         <FormattedMessage
