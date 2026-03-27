@@ -6,7 +6,7 @@ export function useInbox({
   fetchInbox,
   accessTokenKey,
 }: UseInboxParams) {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string | undefined>(undefined);
   const [inbox, setInbox] = useState<Inbox>(null);
   const [loading, setLoading] = useState<boolean>(true);
 

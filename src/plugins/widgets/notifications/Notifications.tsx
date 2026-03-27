@@ -1,14 +1,14 @@
 import React from "react";
 import {
-  fetchSETokens,
-  fetchWikiTokens,
+  fetchGmailInbox,
+  fetchGmailTokens,
   fetchSEInbox,
+  fetchSETokens,
   fetchWikiInbox,
-  dummyTokens,
-  dummyInbox,
+  fetchWikiTokens,
 } from "./api";
-import PopoverIcon from "./PopoverIcon";
 import "./Notifications.sass";
+import PopoverIcon from "./PopoverIcon";
 import { defaultData, Props } from "./types";
 
 const Notifications = ({ cache, data = defaultData, setCache }: Props) => {
@@ -22,6 +22,7 @@ const Notifications = ({ cache, data = defaultData, setCache }: Props) => {
           fetchInbox={fetchSEInbox}
         />
       )}
+
       {data.showWiki && (
         <PopoverIcon
           icon="https://www.google.com/s2/favicons?domain=wikipedia.org&sz=256"
@@ -31,41 +32,14 @@ const Notifications = ({ cache, data = defaultData, setCache }: Props) => {
         />
       )}
 
-      {/* not implemented yet */}
-      <>
-        {data.showSlack && (
-          <PopoverIcon
-            icon="https://www.google.com/s2/favicons?domain=slack.com&sz=256"
-            accessTokenKey={"slack_token"}
-            fetchToken={dummyTokens}
-            fetchInbox={dummyInbox}
-          />
-        )}
-        {data.showGithub && (
-          <PopoverIcon
-            icon="https://github.githubassets.com/favicons/favicon.svg"
-            accessTokenKey={"github_token"}
-            fetchToken={dummyTokens}
-            fetchInbox={dummyInbox}
-          />
-        )}
-        {data.showReddit && (
-          <PopoverIcon
-            icon="https://www.google.com/s2/favicons?domain=reddit.com&sz=256"
-            accessTokenKey={"reddit_token"}
-            fetchToken={dummyTokens}
-            fetchInbox={dummyInbox}
-          />
-        )}
-        {data.showDiscord && (
-          <PopoverIcon
-            icon="https://www.google.com/s2/favicons?domain=discord.com&sz=256"
-            accessTokenKey={"discord_token"}
-            fetchToken={dummyTokens}
-            fetchInbox={dummyInbox}
-          />
-        )}
-      </>
+      {data.showGmail && (
+        <PopoverIcon
+          icon="https://www.google.com/s2/favicons?domain=gmail.com&sz=256"
+          accessTokenKey="gmail_token"
+          fetchToken={fetchGmailTokens}
+          fetchInbox={fetchGmailInbox}
+        />
+      )}
     </div>
   );
 };

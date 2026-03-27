@@ -270,11 +270,14 @@ export function formattedTime(
     minute: "2-digit",
   },
 ) {
-  const date = new Date(unixTime * 1000);
+  // if timestamp looks like seconds (10 digits), convert to ms
+  // otherwise assume it's ms
+  const date = new Date(unixTime < 1e12 ? unixTime * 1000 : unixTime);
+
   return date.toLocaleString(undefined, format);
 }
 
-// helper function for OAuth
+// helper function for OAuth login (with PKCE)
 export async function pkceLogin({
   authUrl,
   tokenEndpoint,
@@ -287,50 +290,55 @@ export async function pkceLogin({
   scope?: string | null;
   clientId: string;
   grant_type?: string | null;
-}) {
-  const { code_verifier, code_challenge } = await pkceChallenge();
+}): Promise<Record<string, string | undefined>> {
+  try {
+    const { code_verifier, code_challenge } = await pkceChallenge();
 
-  const redirect_uri = browser.identity.getRedirectURL().replace(/\/$/, "");
-  // console.log(redirect_uri);
-  // This will be the OAuth callback URL
+    const redirect_uri = browser.identity.getRedirectURL().replace(/\/$/, "");
+    // console.log(redirect_uri);
+    // This will be the OAuth callback URL
 
-  const params = new URLSearchParams({
-    client_id,
-    redirect_uri,
-    code_challenge,
-    response_type: "code",
-    code_challenge_method: "S256",
-    ...(scope && { scope }),
-  });
-
-  const redirectUrl = await browser.identity.launchWebAuthFlow({
-    url: `${authUrl}?${params}`,
-    interactive: true,
-  });
-
-  const code = new URL(redirectUrl).searchParams.get("code");
-
-  if (!code) return {};
-
-  const res = await fetch(tokenEndpoint, {
-    method: "POST",
-    body: new URLSearchParams({
+    const params = new URLSearchParams({
       client_id,
       redirect_uri,
-      code,
-      code_verifier,
-      ...(grant_type && { grant_type }),
-    }),
-  });
+      code_challenge,
+      response_type: "code",
+      code_challenge_method: "S256",
+      ...(scope && { scope }),
+    });
 
-  const json = await res.json();
+    const redirectUrl = await browser.identity.launchWebAuthFlow({
+      url: `${authUrl}?${params}`,
+      interactive: true,
+    });
 
-  if (!res.ok) {
-    console.error(json);
+    const code = new URL(redirectUrl).searchParams.get("code");
+
+    if (!code) return {};
+
+    const res = await fetch(tokenEndpoint, {
+      method: "POST",
+      body: new URLSearchParams({
+        client_id,
+        redirect_uri,
+        code,
+        code_verifier,
+        ...(grant_type && { grant_type }),
+      }),
+    });
+
+    const json = await res.json();
+
+    if (!res.ok) {
+      console.error(json);
+      return {};
+    }
+
+    return json;
+  } catch (e) {
+    console.error(e);
     return {};
   }
-
-  return json;
   /*
     How Client OAuth works:
       - User clicks on Login
@@ -351,6 +359,42 @@ export async function pkceLogin({
   
     Summary: App → Authorization Endpoint → App → POST Token Endpoint → Get tokens 🥳
   */
+}
+
+// helper function for OAuth login (with implicit flow)
+export async function implicitLogin({
+  authUrl,
+  scope,
+  clientId: client_id,
+}: {
+  authUrl: string;
+  scope: string;
+  clientId: string;
+}) {
+  try {
+    const redirect_uri = browser.identity.getRedirectURL().replace(/\/$/, "");
+
+    const params = new URLSearchParams({
+      client_id,
+      redirect_uri,
+      scope,
+      response_type: "token",
+      prompt: "consent",
+    });
+
+    const redirectedUrl = await browser.identity.launchWebAuthFlow({
+      url: `${authUrl}?${params}`,
+      interactive: true,
+    });
+
+    const hash = new URL(redirectedUrl).hash.substring(1);
+    const tokenParams = new URLSearchParams(hash);
+    const access_token = tokenParams.get("access_token") as string;
+    return { access_token };
+  } catch (e) {
+    console.error(e);
+    return {};
+  }
 }
 
 export async function getStoredVal(key: string): Promise<any> {

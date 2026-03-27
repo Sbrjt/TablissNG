@@ -1,7 +1,7 @@
 import { defineMessages } from "react-intl";
 import { Config } from "../../types";
 import Notif from "./Notifications";
-import NotifSettings from "./Settings";
+import NotifSettings from "./NotificationsSettings";
 
 const messages = defineMessages({
   name: {
