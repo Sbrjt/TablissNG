@@ -245,7 +245,7 @@ export const weekdayMessages = defineMessages({
   },
 });
 
-// Legend messages for activity heatmap in Github and Leetcode calendar
+// Legend messages for activity heatmap in GitHub and Leetcode calendar
 export const calendarLegendMessages = defineMessages({
   less: {
     id: "date.legend.less",

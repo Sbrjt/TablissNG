@@ -22,7 +22,7 @@ export const fetchCalendar = async (userId: string) => {
       const count: number = calendar[timestamp];
 
       // Levels are for Heatmap intensity
-      // Available levels: 1, 2, 3, 4
+      // Available levels: 0, 1, 2, 3, 4
       // Values above 4 are clamped to 4
       const level = Math.min(count, MAX_LEVEL);
 
