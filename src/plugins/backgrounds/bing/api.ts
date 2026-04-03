@@ -50,5 +50,3 @@ export async function getImage(data: Data, loader: any): Promise<Image> {
     loader.pop();
   }
 }
-
-export default getImage;

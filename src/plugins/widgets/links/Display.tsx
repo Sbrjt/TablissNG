@@ -217,5 +217,3 @@ export const Display: FC<Props> = ({
     </a>
   );
 };
-
-export default Display;

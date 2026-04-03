@@ -81,5 +81,3 @@ export function useBackgroundRotation<
 
   return { item, go, handlePause };
 }
-
-export default useBackgroundRotation;
