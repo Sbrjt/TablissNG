@@ -1,8 +1,8 @@
+// API used: https://github.com/noworneverev/leetcode-api
+
 import { Activity } from "react-activity-calendar";
 
 const url = "https://leetcode-api-pied.vercel.app/user";
-
-const MAX_LEVEL = 4;
 
 export const fetchCalendar = async (userId: string) => {
   try {
@@ -21,15 +21,10 @@ export const fetchCalendar = async (userId: string) => {
       const date = new Date(Number(timestamp) * 1000);
       const count: number = calendar[timestamp];
 
-      // Levels are for Heatmap intensity
-      // Available levels: 1, 2, 3, 4
-      // Values above 4 are clamped to 4
-      const level = Math.min(count, MAX_LEVEL);
-
       entries.push({
         date: date.toLocaleDateString("en-CA"),
         count,
-        level,
+        level: getLevel(count),
       });
     }
 
@@ -40,4 +35,19 @@ export const fetchCalendar = async (userId: string) => {
   }
 };
 
-// Data sourced from: https://github.com/noworneverev/leetcode-api
+const getLevel = (count: number) => {
+  /*
+   Heatmap intensity levels based on count:
+    0 → no activity
+    1 → 1–3
+    2 → 4–5
+    3 → 6–8
+    4 → >8
+  */
+
+  if (count === 0) return 0;
+  if (count <= 3) return 1;
+  if (count <= 5) return 2;
+  if (count <= 8) return 3;
+  return 4;
+};
