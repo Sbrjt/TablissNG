@@ -1,13 +1,15 @@
-import * as React from "react";
+import "./Overlay.sass";
+
+import { Icon } from "@iconify/react";
+import { type FC, useContext } from "react";
 import { defineMessages, useIntl } from "react-intl";
+
 import { ErrorContext } from "../../contexts/error";
 import { UiContext } from "../../contexts/ui";
 import { toggleFocus } from "../../db/action";
 import { db } from "../../db/state";
 import { useFullscreen, useKeyPress } from "../../hooks";
-import { useValue, useKey } from "../../lib/db/react";
-import { Icon } from "@iconify/react";
-import "./Overlay.sass";
+import { useKey, useValue } from "../../lib/db/react";
 
 const messages = defineMessages({
   settingsHint: {
@@ -38,11 +40,11 @@ const messages = defineMessages({
   },
 });
 
-const Overlay: React.FC = () => {
+const Overlay: FC = () => {
   const intl = useIntl();
   const focus = useValue(db, "focus");
-  const { errors } = React.useContext(ErrorContext);
-  const { pending, toggleErrors, toggleSettings } = React.useContext(UiContext);
+  const { errors } = useContext(ErrorContext);
+  const { pending, toggleErrors, toggleSettings } = useContext(UiContext);
   const [hideSettingsIcon] = useKey(db, "hideSettingsIcon");
   const [settingsIconPosition] = useKey(db, "settingsIconPosition");
 

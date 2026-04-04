@@ -1,11 +1,12 @@
-import * as React from "react";
-import { FormattedMessage, defineMessages, useIntl } from "react-intl";
+import { type FC } from "react";
+import Select from "react-dropdown-select";
+import { defineMessages, FormattedMessage, useIntl } from "react-intl";
+
+import { backgroundMessages } from "../../../locales/messages";
 import { DebounceInput } from "../../shared";
+import BaseSettings from "../base/BaseSettings";
 import topics from "./topics.json";
 import { defaultData, Props } from "./types";
-import { backgroundMessages } from "../../../locales/messages";
-import Select from "react-dropdown-select";
-import BaseSettings from "../base/BaseSettings";
 
 const messages = defineMessages({
   searchTermPlaceholder: {
@@ -20,7 +21,7 @@ const messages = defineMessages({
   },
 });
 
-const UnsplashSettings: React.FC<Props> = ({ data = defaultData, setData }) => {
+const UnsplashSettings: FC<Props> = ({ data = defaultData, setData }) => {
   const intl = useIntl();
   return (
     <div className="UnsplashSettings">

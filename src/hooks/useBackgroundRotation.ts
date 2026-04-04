@@ -1,7 +1,8 @@
-import { useEffect, useCallback } from "react";
-import { RotatingCache, useRotatingCache } from "./useCache";
+import { useCallback, useEffect } from "react";
+
 import { Cache, Loader } from "../plugins/types";
 import { wrap } from "../utils";
+import { RotatingCache, useRotatingCache } from "./useCache";
 
 type RotationData = { paused?: boolean; timeout?: number };
 
