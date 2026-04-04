@@ -1,6 +1,8 @@
-import { ActivityCalendar } from "react-activity-calendar";
-import { useTheme } from "../../../hooks";
 import "./Leetcode.sass";
+
+import { ActivityCalendar } from "react-activity-calendar";
+
+import { useTheme } from "../../../hooks";
 import { useCalendar, useMessages } from "./hooks";
 import { defaultData, Props } from "./types";
 

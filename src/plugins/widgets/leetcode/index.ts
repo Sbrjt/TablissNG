@@ -1,4 +1,5 @@
 import { defineMessages } from "react-intl";
+
 import { Config } from "../../types";
 import LeetcodeCalendarWidget from "./Leetcode";
 import LeetcodeSettings from "./LeetcodeSettings";

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Activity } from "react-activity-calendar";
 import { useIntl } from "react-intl";
+
 import { useFormatMessages } from "../../../hooks";
 import {
   calendarLegendMessages,
