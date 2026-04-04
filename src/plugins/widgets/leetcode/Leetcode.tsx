@@ -28,7 +28,6 @@ const LeetcodeCalendarWidget = ({ data = defaultData }: Props) => {
         <a
           className="Leetcode"
           href={hrefMap[data.clickAction]}
-          target="_blank"
           rel="noopener noreferrer"
           style={{
             cursor: data.clickAction === "none" ? "default" : "pointer",

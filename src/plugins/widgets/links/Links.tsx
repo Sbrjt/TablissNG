@@ -3,7 +3,7 @@ import { FC, useEffect, useMemo } from "react";
 import { Icon } from "@iconify/react";
 import { defineMessages, useIntl } from "react-intl";
 import { useKeyPress, useToggle } from "../../../hooks";
-import Display from "./Display";
+import { Display } from "./Display";
 import "./Links.sass";
 import { Props, defaultCache, defaultData } from "./types";
 

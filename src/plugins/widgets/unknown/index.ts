@@ -16,7 +16,7 @@ export const messages = defineMessages({
   },
 });
 
-const config: Config = {
+export const config: Config = {
   key: "widget/unknown",
   name: messages.name,
   description: messages.description,
@@ -24,5 +24,3 @@ const config: Config = {
   settingsComponent: UnknownSettings,
   supportsBackdrop: false,
 };
-
-export default config;
