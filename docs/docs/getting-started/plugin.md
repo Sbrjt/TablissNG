@@ -87,7 +87,7 @@ export default MyWidget;
 Notes:
 
 - `data` contains your widget’s saved state.
-- The state is automatically persisted by the `useApi` hook (See `src\hooks\useApi.ts`).
+- The state is automatically persisted by the `useApi` hook (see `src/hooks/useApi.ts`).
 
 > This project uses `.sass` for styling. It's like CSS with extra features.
 
@@ -103,7 +103,7 @@ import { Props } from "./types";
 
 const MyWidgetSettings = ({ data, setData }: Props) => {
   return (
-    <div className="LeetcodeSettings">
+    <div>
       <label>
         <FormattedMessage
           id="plugins.mywidget.name"
@@ -138,7 +138,7 @@ const messages = defineMessages({
   name: {
     id: "plugins.mywidget.name",
     defaultMessage: "My Widget",
-    description: "Name of the my widget",
+    description: "Name of my widget",
   },
   description: {
     id: "plugins.mywidget.description",
@@ -163,7 +163,7 @@ export default config;
 Notes:
 
 - Each widget has a `key` defined here.
-- Each instance of widget gets its own generated `id` for storage.  
+- Each widget instance gets its own generated `id` for storage.  
   (This lets users add the same widget multiple times and configure each one independently).
 
 > react-intl is used for translations—include a meaningful description for translators.
@@ -189,7 +189,7 @@ Finally, add your widget to the registry:
 
 ```ts
 // widgets/index.ts
-import myWidget from "./MyWidget";
+import myWidget from "./myWidget";
 
 export const widgetConfigs = [
   // ...,
@@ -207,5 +207,5 @@ Run `npm run dev` and see your new widget in action! 🎉
 
 (More info in [build](/getting-started/building)).
 
-> Widget data is stored in in Extension Storage (or IndexedDb). You can inspect it via DevTools:
+> Widget data is stored in Extension Storage (or IndexedDB). You can inspect it via DevTools:
 > <img src={useBaseUrl("/img/screenshots/getting-started/indexDb.png")} alt="TablissNG Screenshot" height="200"/>
