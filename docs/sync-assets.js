@@ -8,7 +8,7 @@ const filesToSync = [
   { from: "CHANGELOG.md", to: "docs/changelog.md" },
   { from: "CONTRIBUTING.md", to: "docs/community/contributing.md" },
   { from: "TRANSLATING.md", to: "docs/community/translating.md" },
-  { from: "BUILDING.md", to: "docs/getting-started/building.md" },
+  { from: "BUILDING.md", to: "docs/developing/building.md" },
   { from: "src/views/shared/tabliss.svg", to: "static/img/logo.svg" },
 ];
 

@@ -1,6 +1,6 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Create a new widget
+# Creating a new widget
 
 ## Project Structure
 
@@ -69,6 +69,8 @@ A widget consists of:
 
 Below is a quick tutorial to create a new widget.
 
+> **Tip:** Looking at existing widgets in `/src/plugins/widgets/` is a great way to learn how things work. Each widget demonstrates different patterns and features you might need for your own widget.
+
 ### Main component (UI)
 
 This is what users see on the dashboard.
@@ -89,7 +91,7 @@ Notes:
 - `data` contains your widget’s saved state.
 - The state is automatically persisted by the `useApi` hook (see `src/hooks/useApi.ts`).
 
-> This project uses `.sass` for styling. It's like CSS with extra features.
+> This project uses `.sass` for styling. You should look at other `.sass` files for examples, although its pretty similar to regular CSS. You can import the styles in your main component or settings component depending on where they are needed.
 
 ### Settings component
 
@@ -163,10 +165,10 @@ export default config;
 Notes:
 
 - Each widget has a `key` defined here.
-- Each widget instance gets its own generated `id` for storage.  
+- Each widget instance gets its own generated `id` for storage.
   (This lets users add the same widget multiple times and configure each one independently).
 
-> react-intl is used for translations—include a meaningful description for translators.
+> react-intl is used for translations, so please include a meaningful description for translators.
 
 ```ts
 // types.ts
@@ -201,11 +203,11 @@ Some widgets rely on extension-specific APIs. Use `BUILD_TARGET` to include them
 
 ## Run locally
 
-Run `npm run dev` and see your new widget in action! 🎉
+Run `pnpm run dev` and see your new widget in action! 🎉
 
 <img src={useBaseUrl("/img/screenshots/getting-started/newWidget.png")} alt="TablissNG Screenshot" />
 
-(More info in [build](/getting-started/building)).
+(More info in [building](building)).
 
 > Widget data is stored in Extension Storage (or IndexedDB). You can inspect it via DevTools:
 > <img src={useBaseUrl("/img/screenshots/getting-started/indexDb.png")} alt="TablissNG Screenshot" height="200"/>
