@@ -17,17 +17,17 @@ TablissNG/
 │  │  │  ├─ wikimedia/
 │  │  │  └─ ...
 │  │  │
-│  │  ├─ widgets/              # All widgets live here
-│  │  │  ├─ clock/
-│  │  │  ├─ greeting/
-│  │  │  ├─ topSites/
-│  │  │  ├─ todos/
-│  │  │  ├─ quote/
-│  │  │  ├─ weather/
-│  │  │  ├─ ...
-│  │  │  └─ index.ts
+│  │  └─ widgets/              # All widgets live here
+│  │     ├─ clock/
+│  │     ├─ greeting/
+│  │     ├─ topSites/
+│  │     ├─ todos/
+│  │     ├─ quote/
+│  │     ├─ weather/
+│  │     ├─ ...
+│  │     └─ index.ts
 │  │
-│  └─ views/                   # App shell, dashboard, and settings screens
+│  └─ views/                   # App shell, dashboard and settings screens
 │     ├─ App.tsx
 │     ├─ dashboard/
 │     └─ settings/
