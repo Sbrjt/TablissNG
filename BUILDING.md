@@ -56,7 +56,20 @@ pnpm run dev:firefox
 pnpm run dev:safari
 ```
 
-The output will be in the `dist/` directory. You can then load this as an "unpacked extension" in your browser.
+The output will be in the `dist/` directory.
+
+### Loading the extension
+
+- **Chromium**
+  1.  Go to [chrome://extensions](chrome://extensions).
+  2.  Enable Developer Mode (top right).
+  3.  Click "Load unpacked".
+  4.  Select the `dist/chromium` folder.
+
+- **Firefox**
+  1.  Go to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox).
+  2.  Click "Load Temporary Add-on".
+  3.  Select the `manifest.json` inside the `dist/firefox` folder.
 
 **Warning: Data Persistence Notice**
 
