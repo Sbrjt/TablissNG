@@ -71,7 +71,7 @@ _Note: to get the absolute latest builds, you can download from [GitHub Actions]
 
 If you want to test a build without permanent installation (e.g., from a `.zip` file), you can load it temporarily.
 
-1. Open Firefox and type `about:debugging#/runtime/this-firefox]` in the address bar.
+1. Open Firefox and type `about:debugging#/runtime/this-firefox` in the address bar.
 2. Click **"This Firefox"** in the sidebar.
 3. Click **"Load Temporary Add-on..."**.
 4. Select the `.zip` file.
